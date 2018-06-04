@@ -2,7 +2,7 @@
 
 ## About
 
-Repo includes boilerplate with basic structure.
+Repo includes boilerplate with basic structure required to build REST API servers.
 
 ## Commands
 
