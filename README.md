@@ -24,7 +24,7 @@ yarn compile
 
 After compile in repo directory will be created `dist` folder containing JS-code.
 
-### Start
+### Start compiled app
 
 To start compiled app just use command:
 ```sh
