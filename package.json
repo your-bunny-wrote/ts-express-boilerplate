@@ -1,8 +1,7 @@
 {
   "name": "ts-express-boilerplate",
   "description": "Typescript boilerplate",
-  "version": "0.0.0",
-  "private": true,
+  "version": "0.0.1",
   "scripts": {
     "watch": "nodemon",
     "start": "node ./build/www.js",
