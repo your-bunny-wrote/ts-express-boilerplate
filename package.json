@@ -3,10 +3,11 @@
   "description": "Typescript boilerplate",
   "version": "0.0.1",
   "scripts": {
-    "watch": "nodemon",
-    "start": "node ./build/www.js",
-    "test": "NODE_ENV=test TS_NODE_PROJECT='./src/tsconfig.json' mocha -r ts-node/register -c ./tests/*.ts",
-    "compile": "rm -rf ./build && npx tsc -p ./src"
+    "compile": "rm -rf ./build && npx tsc -p ./src",
+    "lint": "./node_modules/.bin/tslint -c tslint.json 'src/**/*.ts'",
+    "start": "nodemon",
+    "start:production": "node ./build/www.js",
+    "test": "NODE_ENV=test TS_NODE_PROJECT='./src/tsconfig.json' mocha -r ts-node/register -c ./tests/*.ts"
   },
   "dependencies": {
     "body-parser": "~1.13.2",
@@ -30,5 +31,9 @@
     "nodemon": "^1.11.0",
     "tslint": "^5.9.1",
     "typescript": "^2.2.1"
-  }
+  },
+  "lint-staged": {
+    "*.ts": "lint"
+  },
+  "pre-commit": "lint-staged"
 }

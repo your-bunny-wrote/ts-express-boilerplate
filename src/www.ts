@@ -25,10 +25,12 @@ function onError(error) {
   // handle specific listen errors with friendly messages
   switch (error.code) {
     case 'EACCES':
+      // tslint:disable-next-line
       console.error(bind + ' requires elevated privileges');
       process.exit(1);
       break;
     case 'EADDRINUSE':
+      // tslint:disable-next-line
       console.error(bind + ' is already in use');
       process.exit(1);
       break;
@@ -42,9 +44,7 @@ function onError(error) {
  */
 function onListening() {
   const addr = server.address();
-  const bind = typeof addr === 'string'
-    ? 'pipe ' + addr
-    : 'port ' + addr.port;
 
-  console.log('Listening on ' + bind);
+  // tslint:disable-next-line
+  console.log(`Listening on http://${addr.address}${addr.port !== 80 ? ':' + addr.port : ''}`);
 }

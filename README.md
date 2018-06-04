@@ -6,12 +6,12 @@ Repo includes boilerplate with basic structure required to build REST API server
 
 ## Commands
 
-### Watch
+### Start
 
 For live reloading server when you write code use command for starting the server in watch mode. The server will be restarted when files in `src` directory changes.
 
 ```sh
-yarn watch
+yarn start
 ```
 
 ### Build
@@ -28,7 +28,7 @@ After compile in repo directory will be created `dist` folder containing JS-code
 
 To start compiled app just use command:
 ```sh
-yarn start
+yarn start:production
 ```
 
 ### Tests
