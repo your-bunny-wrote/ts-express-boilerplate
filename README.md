@@ -1,6 +1,6 @@
 # Typescript express.js boilerplate
 
-[![Build Status](https://travis-ci.com/your-bunny-wrote/ts-express-boilerplate.svg?branch=develop)](https://travis-ci.com/your-bunny-wrote/ts-express-boilerplate)
+[![Build Status](https://travis-ci.com/your-bunny-wrote/ts-express-boilerplate.svg?branch=master)](https://travis-ci.com/your-bunny-wrote/ts-express-boilerplate)
 
 ## About
 
