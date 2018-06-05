@@ -1,5 +1,7 @@
 # Typescript express.js boilerplate
 
+[![Build Status](https://travis-ci.com/your-bunny-wrote/ts-express-boilerplate.svg?branch=develop)](https://travis-ci.com/your-bunny-wrote/ts-express-boilerplate)
+
 ## About
 
 Repo includes boilerplate with basic structure required to build REST API servers.
