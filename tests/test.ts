@@ -1,8 +1,9 @@
 import * as chai from 'chai';
+import chaiHttp = require('chai-http');
 import app from '../src/app';
 
 chai.should();
-chai.use(require('chai-http'));
+chai.use(chaiHttp);
 
 describe('Index', () => {
   describe('hello world', () => {

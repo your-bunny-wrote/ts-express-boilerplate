@@ -34,7 +34,8 @@
     "typescript": "^2.2.1"
   },
   "lint-staged": {
-    "src/**/*.ts": "./node_modules/.bin/tslint"
+    "src/**/*.ts": "./node_modules/.bin/tslint",
+    "tests/**/*.ts": "./node_modules/.bin/tslint"
   },
   "husky": {
     "hooks": {
