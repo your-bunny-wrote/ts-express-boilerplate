@@ -3,8 +3,8 @@
   "address": "127.0.0.1",
   "knex": {
     "host": "127.0.0.1",
-    "user": "app",
-    "database": "app"
+    "user": "ts-express-boilerplate",
+    "database": "ts-express-boilerplate"
   },
   "secret": "secret",
   "jwtSecret": "jwtSecret"

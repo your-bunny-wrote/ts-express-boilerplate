@@ -43,7 +43,7 @@ app.use((error: Error, req, res, next) => {
 // development error handler
 // will print stacktrace
 if (app.get('env') === 'development') {
-  app.use((error: Error, req, res, next) => {
+  app.use((error: any, req, res, next) => {
     res.status(error.status || INTERNAL_SERVER_ERROR_STATUS);
     res.json({
       status: error.status || INTERNAL_SERVER_ERROR_STATUS,

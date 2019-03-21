@@ -1,7 +1,7 @@
 {
   "name": "ts-express-boilerplate",
   "description": "Typescript boilerplate",
-  "version": "0.0.1",
+  "version": "1.0.0",
   "scripts": {
     "compile": "rm -rf ./build && npx tsc -p ./src",
     "start": "nodemon",
