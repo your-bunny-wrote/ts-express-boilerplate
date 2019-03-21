@@ -10,6 +10,9 @@ exports.up = (knex) => {
     table.timestamps(true, true);
     table.string('username').notNullable().unique('username');
     table.string('password').notNullable();
+
+    table.charset('utf8mb4');
+    table.collate('utf8mb4_unicode_ci');
   }).then(
     () => knex('users').insert({
       username,

@@ -2,6 +2,9 @@ language: node_js
 node_js:
   - "node"
 cache: yarn
+services:
+  - mysql
+before_install:
+  - mysql -e 'CREATE DATABASE myapp_test;'
 before_script:
-  - touch sample_db.sqlite
   - yarn migrate
