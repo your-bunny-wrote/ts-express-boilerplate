@@ -29,7 +29,8 @@ app.use((req, res, next) => {
 
 app.use((error: Error, req, res, next) => {
   if (error instanceof HttpValidationError) {
-    return res.json(BAD_REQUEST_STATUS, {
+    res.status(BAD_REQUEST_STATUS);
+    return res.json({
       status: BAD_REQUEST_STATUS,
       errors: error.errors,
     });
@@ -43,7 +44,8 @@ app.use((error: Error, req, res, next) => {
 // will print stacktrace
 if (app.get('env') === 'development') {
   app.use((error: Error, req, res, next) => {
-    res.json(error.status || INTERNAL_SERVER_ERROR_STATUS, {
+    res.status(error.status || INTERNAL_SERVER_ERROR_STATUS);
+    res.json({
       status: error.status || INTERNAL_SERVER_ERROR_STATUS,
       error: error.message,
       stack: error.stack,
@@ -54,7 +56,8 @@ if (app.get('env') === 'development') {
 // production error handler
 // no stacktraces leaked to user
 app.use((error: any, req, res, next) => {
-  return res.json(error.status || INTERNAL_SERVER_ERROR_STATUS, {
+  res.status(error.status || INTERNAL_SERVER_ERROR_STATUS);
+  return res.json({
     status: error.status || INTERNAL_SERVER_ERROR_STATUS,
     error: error.message,
   });
