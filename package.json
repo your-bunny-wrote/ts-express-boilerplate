@@ -6,7 +6,8 @@
     "compile": "rm -rf ./build && npx tsc -p ./src",
     "start": "nodemon",
     "start:production": "node ./build/www.js",
-    "test": "NODE_ENV=test TS_NODE_PROJECT='./src/tsconfig.json' mocha -r ts-node/register -c ./tests/*.ts"
+    "test": "NODE_ENV=test TS_NODE_PROJECT='./src/tsconfig.json' mocha -r ts-node/register -c ./tests/*.ts",
+    "migrate": "npx knex migrate:latest --knexfile src/knexfile.js"
   },
   "dependencies": {
     "body-parser": "~1.13.2",

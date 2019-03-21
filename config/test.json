@@ -1,0 +1,5 @@
+{
+  "knex": {
+    "filename": "/var/sample_db.sqlite"
+  }
+}
