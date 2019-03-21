@@ -1,5 +1,4 @@
-import { BAD_REQUEST_STATUS } from '../constants';
-import { sendResponse } from '../responses/utils';
+import { HttpValidationError } from '../errors';
 
 export default (RequestClass) => async (req, res, next) => {
   const request = new RequestClass(req);
@@ -7,7 +6,7 @@ export default (RequestClass) => async (req, res, next) => {
   if (request.isValid() === false) {
     const errors = {};
     request.errors.forEach((el) => { errors[el.param] = el.msg; });
-    return sendResponse(req, res, BAD_REQUEST_STATUS, { errors });
+    throw new HttpValidationError(errors);
   }
 
   return next();

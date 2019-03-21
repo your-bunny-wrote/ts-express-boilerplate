@@ -3,8 +3,8 @@ import * as express from 'express';
 import * as Knex from 'knex';
 import * as logger from 'morgan';
 import { Model } from 'objection';
-import { INTERNAL_SERVER_ERROR_STATUS } from './constants';
-import { HttpError } from './errors';
+import { BAD_REQUEST_STATUS, INTERNAL_SERVER_ERROR_STATUS } from './constants';
+import { HttpError, HttpValidationError } from './errors';
 import * as knexConfig from './knexfile';
 import router from './routes';
 
@@ -27,16 +27,26 @@ app.use((req, res, next) => {
   next(err);
 });
 
+app.use((error: Error, req, res, next) => {
+  if (error instanceof HttpValidationError) {
+    return res.json(BAD_REQUEST_STATUS, {
+      status: BAD_REQUEST_STATUS,
+      errors: error.errors,
+    });
+  }
+  next(error);
+});
+
 // error handlers
 
 // development error handler
 // will print stacktrace
 if (app.get('env') === 'development') {
-  app.use((error: any, req, res, next) => {
-    res.status(error.status || INTERNAL_SERVER_ERROR_STATUS);
-    res.json({
+  app.use((error: Error, req, res, next) => {
+    res.json(error.status || INTERNAL_SERVER_ERROR_STATUS, {
       status: error.status || INTERNAL_SERVER_ERROR_STATUS,
-      message: error.message,
+      error: error.message,
+      stack: error.stack,
     });
   });
 }
@@ -44,12 +54,10 @@ if (app.get('env') === 'development') {
 // production error handler
 // no stacktraces leaked to user
 app.use((error: any, req, res, next) => {
-  res.status(error.status || INTERNAL_SERVER_ERROR_STATUS);
-  res.json({
+  return res.json(error.status || INTERNAL_SERVER_ERROR_STATUS, {
     status: error.status || INTERNAL_SERVER_ERROR_STATUS,
-    message: error.message,
+    error: error.message,
   });
-  return null;
 });
 
 export default app;
