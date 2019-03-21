@@ -8,9 +8,10 @@ exports.up = (knex) => {
   return knex.schema.createTable('users', (table) => {
     table.increments('id').primary();
     table.timestamps(true, true);
-    table.string('username').notNullable().unique('username');
+    table.string('username', 20).notNullable();
     table.string('password').notNullable();
 
+    table.unique('username');
     table.charset('utf8mb4');
     table.collate('utf8mb4_unicode_ci');
   }).then(
