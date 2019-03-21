@@ -59,7 +59,7 @@ app.use((error: any, req, res, next) => {
   res.status(error.status || INTERNAL_SERVER_ERROR_STATUS);
   return res.json({
     status: error.status || INTERNAL_SERVER_ERROR_STATUS,
-    error: error.message,
+    error: error.status !== undefined ? error.message : 'Internal server error',
   });
 });
 
