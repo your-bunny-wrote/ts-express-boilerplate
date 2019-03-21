@@ -33,4 +33,4 @@ npm-debug.log
 sample_db.sqlite
 /config/*.json
 !/config/default.json
-!/config/test.json
+!/config/test.js

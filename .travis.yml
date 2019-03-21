@@ -3,5 +3,5 @@ node_js:
   - "node"
 cache: yarn
 before_script:
-  - touch /var/sample_db.sqlite
+  - touch sample_db.sqlite
   - yarn migrate
