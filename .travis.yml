@@ -4,6 +4,8 @@ node_js:
 cache: yarn
 services:
   - mysql
+env:
+- NODE_ENV=test
 before_install:
   - mysql -e 'CREATE DATABASE myapp_test;'
 before_script:
