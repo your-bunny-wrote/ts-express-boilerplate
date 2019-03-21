@@ -1,7 +1,7 @@
 import * as config from 'config';
 import * as jwt from 'jsonwebtoken';
 import { UNAUTHIRIZED_STATUS } from '../constants';
-import User from '../models/User';
+import User from '../models/user';
 import { sendResponse } from '../responses/utils';
 
 const jwtSecret = config.get<string>('jwtSecret');
