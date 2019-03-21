@@ -42,3 +42,17 @@ Following command run testing tool:
 ```sh
 yarn test
 ```
+
+### DB migrations
+
+For create new migration use following command:
+
+```sh
+npx knex migrate:make MIGRATION_NAME --knexfile src/knexfile.js
+```
+
+To apply migrations use this command:
+
+```sh
+npx knex migrate:latest --knexfile src/knexfile.js
+```

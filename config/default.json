@@ -1,4 +1,11 @@
 {
   "port": 8080,
-  "address": "127.0.0.1"
+  "address": "127.0.0.1",
+  "knex": {
+    "host": "127.0.0.1",
+    "user": "ts-express-boilerplate",
+    "database": "ts-express-boilerplate"
+  },
+  "secret": "secret",
+  "jwtSecret": "jwtSecret"
 }

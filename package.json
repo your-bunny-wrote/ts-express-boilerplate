@@ -1,18 +1,25 @@
 {
   "name": "ts-express-boilerplate",
   "description": "Typescript boilerplate",
-  "version": "0.0.1",
+  "version": "1.0.0",
   "scripts": {
     "compile": "rm -rf ./build && npx tsc -p ./src",
     "start": "nodemon",
     "start:production": "node ./build/www.js",
-    "test": "NODE_ENV=test TS_NODE_PROJECT='./src/tsconfig.json' mocha -r ts-node/register -c ./tests/*.ts"
+    "test": "NODE_ENV=test TS_NODE_PROJECT='./src/tsconfig.json' mocha -r ts-node/register -c ./tests/*.ts",
+    "migrate": "npx knex migrate:latest --knexfile src/knexfile.js"
   },
   "dependencies": {
     "body-parser": "~1.13.2",
     "config": "^1.30.0",
     "express": "~4.13.1",
+    "express-promise-router": "^3.0.3",
+    "express-validator": "^3.2.1",
+    "jsonwebtoken": "^8.5.1",
+    "knex": "^0.16.3",
     "morgan": "~1.6.1",
+    "mysql": "^2.16.0",
+    "objection": "^1.6.3",
     "ts-node": "^5.0.1"
   },
   "devDependencies": {
@@ -21,8 +28,12 @@
     "@types/chai-http": "^3.0.4",
     "@types/config": "^0.0.34",
     "@types/express": "^4.0.35",
+    "@types/express-promise-router": "^2.0.1",
+    "@types/jsonwebtoken": "^8.3.2",
+    "@types/knex": "^0.16.1",
     "@types/mocha": "^2.2.40",
     "@types/morgan": "^1.7.32",
+    "@types/mysql": "^2.15.5",
     "@types/node": "^7.0.10",
     "chai": "^4.1.2",
     "chai-http": "^4.0.0",

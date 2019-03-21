@@ -1,0 +1,4 @@
+export const SUCCESS_STATUS = 200;
+export const BAD_REQUEST_STATUS = 400;
+export const UNAUTHIRIZED_STATUS = 401;
+export const INTERNAL_SERVER_ERROR_STATUS = 500;

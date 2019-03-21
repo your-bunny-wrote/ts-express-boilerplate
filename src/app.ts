@@ -1,9 +1,17 @@
 import * as bodyParser from 'body-parser';
 import * as express from 'express';
+import * as Knex from 'knex';
 import * as logger from 'morgan';
-import { HttpError } from './errors';
+import { Model } from 'objection';
+import { BAD_REQUEST_STATUS, INTERNAL_SERVER_ERROR_STATUS } from './constants';
+import { HttpError, HttpValidationError } from './errors';
+import * as knexConfig from './knexfile';
 import router from './routes';
+
 const app: express.Express = express();
+
+const knex = Knex(knexConfig);
+Model.knex(knex);
 
 if (process.env.NODE_ENV !== 'test') {
   app.use(logger('[:date[iso]] :method :url :status - :response-time ms'));
@@ -19,15 +27,28 @@ app.use((req, res, next) => {
   next(err);
 });
 
+app.use((error: Error, req, res, next) => {
+  if (error instanceof HttpValidationError) {
+    res.status(BAD_REQUEST_STATUS);
+    return res.json({
+      status: BAD_REQUEST_STATUS,
+      errors: error.errors,
+    });
+  }
+  next(error);
+});
+
 // error handlers
 
 // development error handler
 // will print stacktrace
 if (app.get('env') === 'development') {
   app.use((error: any, req, res, next) => {
-    res.status(error.status || 500);
+    res.status(error.status || INTERNAL_SERVER_ERROR_STATUS);
     res.json({
-      message: error.message,
+      status: error.status || INTERNAL_SERVER_ERROR_STATUS,
+      error: error.message,
+      stack: error.stack,
     });
   });
 }
@@ -35,11 +56,11 @@ if (app.get('env') === 'development') {
 // production error handler
 // no stacktraces leaked to user
 app.use((error: any, req, res, next) => {
-  res.status(error.status || 500);
-  res.json('error', {
-    message: error.message,
+  res.status(error.status || INTERNAL_SERVER_ERROR_STATUS);
+  return res.json({
+    status: error.status || INTERNAL_SERVER_ERROR_STATUS,
+    error: error.status !== undefined ? error.message : 'Internal server error',
   });
-  return null;
 });
 
 export default app;

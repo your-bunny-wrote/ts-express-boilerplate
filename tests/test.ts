@@ -10,7 +10,10 @@ describe('Index', () => {
     it('should return hello message', async () => {
       const res = await chai.request(app).get('/api');
       res.should.have.status(200);
-      res.body.should.deep.equal({ message: 'Hello world' });
+      res.body.should.deep.equal({
+        status: 200,
+        data: { message: 'Hello world' },
+      });
     });
   });
 });

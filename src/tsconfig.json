@@ -5,7 +5,8 @@
 		"outDir": "../build",
 		"lib": [
       "es6",
-		],
+    ],
+    "allowJs": true,
 		"sourceMap": false,
     "rootDir": ".",
     "experimentalDecorators": true,
