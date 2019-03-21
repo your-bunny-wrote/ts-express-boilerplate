@@ -30,3 +30,6 @@ node_modules
 npm-debug.log
 /build
 .vscode
+sample_db.sqlite
+/config/*.json
+!/config/default.json
