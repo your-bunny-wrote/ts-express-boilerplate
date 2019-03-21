@@ -2,12 +2,9 @@
   "port": 8080,
   "address": "127.0.0.1",
   "knex": {
-    "client": "mysql",
-    "connection": {
-      "host": "127.0.0.1",
-      "user": "travis",
-      "database": "myapp_test"
-    }
+    "host": "127.0.0.1",
+    "user": "app",
+    "database": "app"
   },
   "secret": "secret",
   "jwtSecret": "jwtSecret"
